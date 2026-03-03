@@ -35,6 +35,12 @@ The value function is derived at the end of canvas completion. Hard constraints,
 
 ---
 
+## See It Running
+
+[Watch the demo](https://youtu.be/CPCu2l_9GXM) — 95 seconds. One command. Regulation in, 16-section business canvas out.
+
+---
+
 ## Agents
 
 Core ships with three agents. Human directs them via CLI — there is no orchestrator layer in Core. The orchestrator is a Pro component.
