@@ -37,7 +37,7 @@ The value function is derived at the end of canvas completion. Hard constraints,
 
 ## See It Running
 
-[Watch the demo](https://youtu.be/CPCu2l_9GXM) — 95 seconds. One command. Regulation in, 16-section business canvas out.
+[Watch the demo](https://youtu.be/CPCu2l_9GXM) - 5 minutes. One command. Regulation in, business model out.
 
 ---
 
