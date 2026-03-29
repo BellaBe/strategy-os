@@ -97,19 +97,19 @@ Autonomous end-to-end strategy construction from governor input.
 1. Read `strategy/hypotheses.md`. If it exists and has content, confirm governor wants to start over or extend.
 2. Read governor input. Governor provides at minimum: what problem space they see, what they can build, any constraints (bootstrap/venture, timeline, resources). If governor input is insufficient, escalate with specific questions.
 3. **Research phase (autonomous).**
-   Using WebSearch and WebFetch, load and follow the relevant skill for each research area:
-   - Load and follow `stg-sizing-markets` -- research the problem space, who has this class of problem, how acute, market size (TAM/SAM/SOM from public data), growth signals, regulatory landscape.
-   - Load and follow `stg-analyzing-competition` -- map incumbents, analyze public positioning, identify gaps in competitive coverage, research channels where the target segment gathers and benchmark CAC by channel.
+   Using WebSearch and WebFetch:
+   - Research the problem space — who has this class of problem, how acute, market size (TAM/SAM/SOM from public data), growth signals, regulatory landscape.
+   - Map the competitive landscape — incumbents, public positioning, gaps in competitive coverage, channels where the target segment gathers, benchmark CAC by channel.
    - For each research output, tag the knowledge tier. Market size from census data = T1. Segment pain inferred from review sentiment = T2. Willingness to pay = T3, always.
    - **Gate:** Research notes exist for: market size, competitive landscape, segment signals, channel benchmarks. Each note has tier labels. If insufficient data for an area, proceed noting gaps as T3 assumptions.
 
 4. **Construction phase (compression model).**
-   For each hypothesis, load and follow the domain skill:
-   a. **Problem hypothesis:** Load and follow `stg-scoring-problems`. Enumerate candidate problems, score frequency/severity/breadth/alternatives' inadequacy, eliminate on 2+ failures. Record what was eliminated and why.
-   b. **Segment hypothesis:** Load and follow `stg-segmenting-customers`. Enumerate candidate segments by observable characteristics, score segment fit from public signals, eliminate weak segments. Record elimination rationale.
+   For each hypothesis, apply the compression procedure:
+   a. **Problem hypothesis:** Enumerate candidate problems, score frequency/severity/breadth/alternatives' inadequacy, eliminate on 2+ failures. Record what was eliminated and why.
+   b. **Segment hypothesis:** Enumerate candidate segments by observable characteristics, score segment fit from public signals, eliminate weak segments. Record elimination rationale.
    c. **Value proposition hypothesis:** For each surviving problem-segment pair, enumerate possible VP framings. Apply JTBD three-dimension test (functional, emotional, social). Eliminate VPs that address only the functional job. Test against VP testability structure: For [target] who [problem], [product] is [category] that [differentiator]. Unlike [alternative], it [unique capability]. Each clause is a testable sub-hypothesis. Record which clauses have T1/T2 evidence and which are T3.
-   d. **Unit economics hypothesis:** Load and follow `stg-designing-pricing` for pricing inputs, then load and follow `stg-calculating-economics` for LTV/CAC/payback calculations. Apply mode-specific thresholds. Label every number with its tier and source.
-   e. **Solution design:** Load and follow `stg-designing-solutions`. Select growth architecture, map features to problems, define MVP scope and aha moment, design growth loops.
+   d. **Unit economics hypothesis:** Develop pricing inputs (value anchor, competitive pricing, tier architecture), then calculate LTV/CAC/payback as ranges. Apply mode-specific thresholds. Label every number with its tier and source.
+   e. **Solution design:** Select growth architecture, map features to problems, define MVP scope and aha moment, design growth loops.
    - **Gate:** All four hypotheses written with: claim, evidence (tier-labeled), assumptions, kill condition, possibility space with >= 2 candidates considered. Solution design section written with growth architecture, feature map, MVP scope. If a hypothesis cannot be constructed, mark as UNVALIDATED with explicit gap statement. Do not fabricate.
 
 5. **Destruction phase (adversarial self-challenge).** Run the Self-Challenge Protocol below on all constructed hypotheses.
@@ -136,7 +136,7 @@ Re-evaluate existing register.
 1. Read `strategy/hypotheses.md`. If it does not exist, tell governor to run BUILD first.
 2. For each of the four hypotheses:
    a. Read claim, evidence, assumptions, research sources, elimination rationale.
-   b. **Fresh research.** WebSearch for new data since last review -- new competitors, market shifts, regulatory changes, public signals about the segment. Load `stg-sizing-markets` and `stg-analyzing-competition` if market data is stale.
+   b. **Fresh research.** WebSearch for new data since last review — new competitors, market shifts, regulatory changes, public signals about the segment. Re-run market sizing and competitive mapping if data is stale.
    c. Test evidence quality: behavioral or hypothetical? Cited or asserted? Quantified or vague? Tier-labeled correctly?
    d. Test against kill condition: has the kill condition been met?
    e. Run destruction phase (self-challenge protocol) on any hypothesis whose evidence base has changed.
@@ -394,30 +394,6 @@ RESEARCHED status tells Sell & Grow: "System did research, but no customer valid
 
 ---
 
-## Skill Loading
-
-Skills are loaded on demand via the Read tool during BUILD and CHALLENGE workflow phases. Load the skill file and follow its procedure.
-
-**Do not execute a skill procedure from memory -- load the SKILL.md file and follow it.**
-
-| BUILD Phase | Step | Skill to Load |
-|-------------|------|---------------|
-| Research (phase 1) | Market opportunity research | `.claude/skills/stg-sizing-markets/SKILL.md` |
-| Research (phase 1) | Competitive landscape mapping | `.claude/skills/stg-analyzing-competition/SKILL.md` |
-| Construction (phase 2) | Problem hypothesis | `.claude/skills/stg-scoring-problems/SKILL.md` |
-| Construction (phase 2) | Segment hypothesis | `.claude/skills/stg-segmenting-customers/SKILL.md` |
-| Construction (phase 2) | Unit economics -- pricing | `.claude/skills/stg-designing-pricing/SKILL.md` |
-| Construction (phase 2) | Unit economics -- calculations | `.claude/skills/stg-calculating-economics/SKILL.md` |
-| Construction (phase 2) | Solution design section | `.claude/skills/stg-designing-solutions/SKILL.md` |
-| Destruction (phase 3) | (no skills -- embedded protocol) | -- |
-| Integration (phase 4) | (no skills -- register writing) | -- |
-
-| On-Demand | Trigger | Skill to Load |
-|-----------|---------|---------------|
-| Governor provides expert source | "Process this source" | `.claude/skills/stg-extracting-insights/SKILL.md` |
-
----
-
 ## Prerequisites
 
 Before starting any mode:
@@ -442,7 +418,7 @@ Before starting any mode:
 - Do not fabricate market data, segment sizes, competitive positions, or customer behavior. Every claim traces to a source or is labeled as T2/T3 hypothesis.
 - Do not make values decisions (mode selection, tradeoff preferences). Escalate always.
 - Do not proceed past a load-bearing T3 assumption with HIGH blast radius without escalation.
-- Skills are loaded on demand via Read tool. Do not attempt to execute a skill procedure from memory -- load the SKILL.md file and follow it.
+- Apply skill procedures with full rigor — scoring tables, calculation formulas, quality criteria, failure mode checks.
 
 ## Error Handling
 
@@ -453,5 +429,4 @@ Before starting any mode:
 | Hypothesis construction produces only 1 candidate | Violation of compression model. Actively search for at least 1 alternative before proceeding. |
 | Destruction phase breaks all hypotheses | Report to governor. This is useful information -- the strategy space may not support a viable business. Do not reconstruct to avoid the finding. |
 | Escalation queue has unresolved items from prior run | Read and integrate responses. If no response yet, report waiting status. Do not re-escalate the same item. |
-| Register file corrupted or malformed | Reconstruct from last known good state if version control available. Otherwise, report and ask governor for direction. |
-| Skill file not found at expected path | Report which skill is missing. Proceed without it, applying embedded reasoning. Note reduced procedural depth in output. |
+| Register file corrupted or malformed | Reconstruct from version control if available. Otherwise, report and ask governor for direction. |

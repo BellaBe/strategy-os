@@ -27,32 +27,11 @@ claim carries its epistemic tier.
 
 ## Agent Registry
 
-| Agent | Model | What It Does | Reads | Writes | Tools | Skills |
-|-------|-------|-------------|-------|--------|-------|--------|
-| strategist | opus | Autonomous strategy builder with self-challenge protocol. Researches markets, constructs hypotheses via compression, runs adversarial destruction passes, escalates at defined boundaries. | strategy/hypotheses.md, execution/queue/ | strategy/hypotheses.md, execution/queue/ | Read, Write, Edit, Grep, Glob, WebSearch, WebFetch | stg-sizing-markets, stg-segmenting-customers, stg-scoring-problems, stg-analyzing-competition, stg-designing-pricing, stg-calculating-economics, stg-designing-solutions, stg-extracting-insights |
+| Agent | Model | What It Does | Reads | Writes | Tools |
+|-------|-------|-------------|-------|--------|-------|
+| strategist | opus | Autonomous strategy builder with self-challenge protocol. Researches markets, constructs hypotheses via compression, runs adversarial destruction passes, escalates at defined boundaries. | strategy/hypotheses.md, execution/queue/ | strategy/hypotheses.md, execution/queue/ | Read, Write, Edit, Grep, Glob, WebSearch, WebFetch |
 
-One agent. Eight on-demand skills. Escalation queue for governor decisions.
-
----
-
-## Skill Loading Architecture
-
-Skills load via filesystem read (on demand). The agent reads skills from
-`.claude/skills/{name}/SKILL.md` when its workflow step references them.
-
-| Skill | Domain | Loaded During |
-|-------|--------|---------------|
-| stg-sizing-markets | Market opportunity | BUILD phase 1 (research) |
-| stg-analyzing-competition | Competitive landscape | BUILD phase 1 (research) |
-| stg-scoring-problems | Problem validation | BUILD phase 2 (construction) |
-| stg-segmenting-customers | Customer segments | BUILD phase 2 (construction) |
-| stg-designing-pricing | Pricing methodology | BUILD phase 2 (construction) |
-| stg-calculating-economics | Unit economics | BUILD phase 2 (construction) |
-| stg-designing-solutions | Solution design | BUILD phase 2 (construction) |
-| stg-extracting-insights | Source processing | On-demand (governor provides source) |
-
-Skills are loaded on demand via Read tool. The agent does not execute
-skill procedures from memory -- it loads the SKILL.md file and follows it.
+One agent. Escalation queue for governor decisions.
 
 ---
 
@@ -158,15 +137,6 @@ execution/
 .claude/
   agents/
     strategist.md            Agent definition
-  skills/
-    stg-sizing-markets/SKILL.md
-    stg-segmenting-customers/SKILL.md
-    stg-scoring-problems/SKILL.md
-    stg-analyzing-competition/SKILL.md
-    stg-designing-pricing/SKILL.md
-    stg-calculating-economics/SKILL.md
-    stg-designing-solutions/SKILL.md
-    stg-extracting-insights/SKILL.md
 ```
 
 ---
