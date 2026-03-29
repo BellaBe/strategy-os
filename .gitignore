@@ -1,2 +1,24 @@
+# Agent memory
 .claude/agent-memory/
-.clade/specs
+
+# Specs (internal, not shipped)
+.claude/specs/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Dashboard generated files
+tools/dashboard/public/register.json
+
+# Sync script temp files
+*.tmp
+*.debug
+
+# Knowledge (project-specific, not shipped)
+knowledge/
+
+# OS
+.DS_Store
