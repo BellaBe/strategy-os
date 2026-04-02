@@ -1,4 +1,4 @@
-# LeanOS Core
+# Strategy OS
 
 Autonomous business strategy for founders. One agent builds and stress-tests your strategy before you commit to building.
 
