@@ -1,4 +1,4 @@
-# StrategistOS
+# StrategyOS
 
 Autonomous strategy and gap intelligence system.
 Part of **LeanOS** → **The Missing Team** product portfolio.
@@ -7,9 +7,9 @@ Part of **LeanOS** → **The Missing Team** product portfolio.
 
 ## Position in the System
 
-StrategistOS is the **entry point** of the LeanOS product pipeline.
+StrategyOS is the **entry point** of the LeanOS product pipeline.
 
-    StrategistOS (free)
+    StrategyOS (free)
         ↓
     Produces:
         - Hypothesis Register
@@ -47,7 +47,7 @@ Kill conditions - Confidence state
 
 #### 2. Gap Register
 
-StrategistOS produces **targeting intelligence**:
+StrategyOS produces **targeting intelligence**:
 
 -   Market gaps → unserved needs
 -   Competitive openings → positioning white space
