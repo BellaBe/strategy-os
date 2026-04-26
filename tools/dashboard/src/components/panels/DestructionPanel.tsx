@@ -67,48 +67,20 @@ export function DestructionPanel({ view }: Props) {
         <div className="destruction-section">
           <h3 className="section-heading">Pre-Mortem</h3>
           <div className="pre-mortem-narrative">
-            {view.preMortem.narrative.split('\n\n').map((para, i) => (
+            {view.preMortem.split('\n\n').map((para, i) => (
               <p key={i}>{para}</p>
             ))}
           </div>
-          {view.preMortem.keyFindings.length > 0 && (
-            <div className="pre-mortem-findings">
-              <h4 className="subsection-heading">Key Findings</h4>
-              <ul className="findings-list">
-                {view.preMortem.keyFindings.map((f, i) => (
-                  <li key={i} className="findings-list__item">{f}</li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       )}
 
       {/* Red team */}
-      {view.redTeam && (
+      {view.redTeamResponse && (
         <div className="destruction-section">
           <h3 className="section-heading">Red Team Response</h3>
-          <p className="red-team-scenario">{view.redTeam.scenario}</p>
-          {view.redTeam.responses.length > 0 && (
-            <div className="red-team-timeline">
-              {view.redTeam.responses.map((r, i) => (
-                <div key={i} className="timeline-item">
-                  <span className="timeline-item__time">{r.timeline}</span>
-                  <p className="timeline-item__action">{r.action}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          {view.redTeam.survivalDependsOn.length > 0 && (
-            <div className="survival-depends">
-              <h4 className="subsection-heading">Strategy Survival Depends On</h4>
-              <ul className="survival-list">
-                {view.redTeam.survivalDependsOn.map((s, i) => (
-                  <li key={i}>{s}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {view.redTeamResponse.split('\n\n').map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
         </div>
       )}
 
@@ -124,7 +96,7 @@ export function DestructionPanel({ view }: Props) {
               {view.constraintInversions.fails} Fails
             </span>
             <span className="inversion-summary__item inversion-summary__item--marginal">
-              {view.constraintInversions.marginal} Marginal
+              {view.constraintInversions.withModification} With Modification
             </span>
           </div>
           <DataTable
@@ -134,10 +106,10 @@ export function DestructionPanel({ view }: Props) {
               { key: 'consequence', header: 'Consequence', render: r => r.consequence },
               {
                 key: 'survives', header: 'Survives?', render: r => {
-                  const cls = /^Yes/i.test(r.strategySurvives) ? 'text-passes'
-                    : /^No/i.test(r.strategySurvives) ? 'text-fails'
+                  const cls = /^Yes/i.test(r.survives) ? 'text-passes'
+                    : /^No/i.test(r.survives) ? 'text-fails'
                     : 'text-warning';
-                  return <span className={cls}>{r.strategySurvives}</span>;
+                  return <span className={cls}>{r.survives}</span>;
                 }
               },
             ]}
